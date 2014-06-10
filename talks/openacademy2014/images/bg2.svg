@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" baseProfile="full"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:ev="http://www.w3.org/2001/xml-events" >
+<defs>
+<linearGradient id="PSgrad_0" x1="0%" x2="100%" y1="0%" y2="0%">
+  <stop offset="0%" stop-color="rgb(79,22,52)" stop-opacity="1" />
+  <stop offset="100%" stop-color="rgb(25,56,114)" stop-opacity="1" />
+</linearGradient>
+
+</defs><path fill-rule="evenodd"  stroke="rgb( 255, 255, 255 )" stroke-width="3px" stroke-linecap="butt" stroke-linejoin="miter" fill="rgb( 29, 33, 37 )"
+ d="M-16.000,-23.000 C-16.000,-23.000 4012.000,-23.000 4012.000,-23.000 C4012.000,-23.000 4012.000,1098.000 4012.000,1098.000 C4012.000,1098.000 -16.000,1098.000 -16.000,1098.000 C-16.000,1098.000 -16.000,-23.000 -16.000,-23.000 Z"/>
+<path fill-rule="evenodd"  opacity="0.439" fill="rgb( 29, 33, 37 )"
+ d="M-2.000,19.000 C-2.000,19.000 3998.000,19.000 3998.000,19.000 C3998.000,19.000 3998.000,1083.000 3998.000,1083.000 C3998.000,1083.000 -2.000,1083.000 -2.000,1083.000 C-2.000,1083.000 -2.000,19.000 -2.000,19.000 Z"/>
+<path fill="url(#PSgrad_0)"
+ d="M-2.000,19.000 C-2.000,19.000 3998.000,19.000 3998.000,19.000 C3998.000,19.000 3998.000,1083.000 3998.000,1083.000 C3998.000,1083.000 -2.000,1083.000 -2.000,1083.000 C-2.000,1083.000 -2.000,19.000 -2.000,19.000 Z"/>
+</svg>

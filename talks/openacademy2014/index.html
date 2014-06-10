@@ -1,0 +1,2647 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JMS</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/ustream.css" id="theme">
+		<link rel="stylesheet" href="css/figures.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-bottom-title="JavaScript Module Server" data-background="#ffffff">
+
+					<h2 class="main-title">JavaScript Module Server</h2>
+
+                    <div class="svg openacademy">
+                        <img src="images/openacademy.png" width="400" />
+                    </div>
+
+
+				</section>
+
+                <section data-bottom-title="Bemutatkozás">
+
+                    <h3><a href="http://github.com/necccc" class="link-github">Szabolcsi-Tóth Szabolcs</a></h3>
+
+                    <h3><a href="http://twitter.com/_nec" class="link-twitter">@_Nec</a></h3>
+
+                    <div class="svg ustream">
+                        <img src="images/ustream.svg" width="400" />
+                    </div>
+
+
+                </section>
+
+                <section data-bottom-title="JavaScript">
+
+                    <h2>JavaScript</h2>
+
+                    <aside class="notes">
+
+                        a bit about of Loading Javascript.
+                        <br />
+                        Today Javascript plays a vital role on almost every major website
+                        or web application around the world.
+                        <br />
+                        So I think most frontend engineers faced some issues with putting the javascript on a page.
+                        <br />
+                        Has it to be async, blocking, deferred, should we put it to the page head,
+                        or to the top of the body, or bottom of the body?
+                        <br />
+                        How do we load Javascript?
+
+                    </aside>
+
+                </section>
+
+
+                <!--
+
+                      _     ___    _    ____ ___ _   _  ____        _   ___     ___    ____   ____ ____  ___ ____ _____
+                     | |   / _ \  / \  |  _ \_ _| \ | |/ ___|      | | / \ \   / / \  / ___| / ___|  _ \|_ _|  _ \_   _|
+                     | |  | | | |/ _ \ | | | | ||  \| | |  _    _  | |/ _ \ \ / / _ \ \___ \| |   | |_) || || |_) || |
+                     | |__| |_| / ___ \| |_| | || |\  | |_| |  | |_| / ___ \ V / ___ \ ___) | |___|  _ < | ||  __/ | |
+                     |_____\___/_/   \_\____/___|_| \_|\____|   \___/_/   \_\_/_/   \_\____/ \____|_| \_\___|_|    |_|
+
+
+                -->
+
+
+                <section data-bottom-title="JavaScript betöltése">
+
+					<h2>A JavaScript betöltése</h2>
+
+                    <aside class="notes">
+
+                        a bit about of Loading Javascript.
+                        <br />
+                        Today Javascript plays a vital role on almost every major website
+                        or web application around the world.
+                        <br />
+                        So I think most frontend engineers faced some issues with putting the javascript on a page.
+                        <br />
+                        Has it to be async, blocking, deferred, should we put it to the page head,
+                        or to the top of the body, or bottom of the body?
+                        <br />
+                        How do we load Javascript?
+
+                    </aside>
+
+				</section>
+
+
+                <section data-bottom-title="JavaScript betöltése">
+
+                    <div class="part-main figures">
+                        <div class="fig fig-js fig-js-inline"><span>JS</span></div>
+                        <div class="fig fig-html"><span>HTML</span></div>
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Inline script</h3>
+
+                        <ul class="fragment" data-figure="inlinescripts">
+                            <li>Gyors kísérletek</li>
+                            <li>Megosztható példák</li>
+                            <li>Tanulás</li>
+                            <li>Tesztelés</li>
+                        </ul>
+                    </div>
+
+
+                    <aside class="notes">
+
+
+
+
+
+                        If someone starts learning to build webpages, i'm sure inline scripting will come handy
+                        <br />
+                        In fact inline scripts still can have some role in the web today.
+                        <br />
+                        embedding, sandboxing, small distributable demos, learning, trying out new things.
+                        <br />
+                        more downsides than benefits,
+                        they affect pageload times, <br />
+                        block script execution,<br />
+                        and document markup is usually tied together with the scipts,
+                        <br /> preventing the code to be reusable elsewhere.
+                        <br />
+                        If you keep developing this way, the code will get harder to maintain
+
+
+
+
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="JavaScript betöltése">
+
+                    <div class="part-main figures inlinescripts">
+                        <div class="fig fig-js fig-js-inline"><span>JS</span></div>
+                        <div class="fig fig-html"><span>HTML</span></div>
+                    </div>
+
+
+                    <div class="part-side">
+                        <h3>JavaScript állományok</h3>
+
+                        <ul class="fragment" data-figure="separatedfiles">
+                            <li>Kód elválasztása a tartalomtól</li>
+                            <li>Modularizálás</li>
+                            <li>JS egy távoli szerveren</li>
+                        </ul>
+                    </div>
+
+
+                    <aside class="notes">
+
+
+
+
+
+
+                        So, you put those lines of javascript into a file.
+                        <br />
+                        This way markup and script code are separated, and as you keep getting better at developing,
+                        the code will be more and more independent from the markup
+                        <br />
+                        Portable, reuseable code is easier to maintain, and for example you can run automated tests on them.
+                        <br />
+                        From now on Javascript is a separate, static asset, loaded from some server.
+
+
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="JavaScript betöltése">
+
+                    <div class="part-main figures separatedfiles inlinescripts">
+                        <div class="fig fig-js fig-js-inline"><span>JS</span></div>
+                        <div class="fig fig-js org-1"><span>JS</span></div>
+                        <div class="fig fig-js org-2"><span>JS</span></div>
+                        <div class="fig fig-js org-3"><span>JS</span></div>
+                        <div class="fig fig-js org-4"><span>JS</span></div>
+
+                        <div class="fig fig-html"><span>HTML</span></div>
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Kódszervezés</h3>
+
+                        <ul class="fragment" data-figure="organizedcode">
+                            <li>Funkciók, Osztályok, Modulok</li>
+                            <li>Növekvő kódbázis</li>
+                            <li>Betölteni mindezt lassan problémás lesz</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+
+                        As your web application gets more complex, you get used to more sophisticated code organization techniques.
+                        <br />
+                        You build functions, classes, components, modules, bound together or decoupled from each other
+                        <br />
+                        The codebase grows and grows, as you do frameworks, controllers, models, views,
+                        and loading all that code starts to be a problem
+                        <br />
+                        <br />
+                        Your network connection might be broadband, but in case of loading lots of files from the internet, network latency will hold you back.
+                        <br />
+                        Latency is the amount of time it takes for a server recevie your request, it relates to the distance between you, and the contacted server.
+                        In case of a few files, latency is almost irrelevant.
+                        <br />
+                        But if you have a large codebase, contacting the servers for those files, takes time, even if your browser supports 6 or more concurrent connections
+                        <br />
+                        With a quick calculation, using 120 files with a browser, that supports 6 concurrent connections per host, it's going to download in 20 subsequent reguests to that host, at an average latency of 80 ms, it is going to sum up to 1.6 seconds.
+                        <br />
+                        1.6 seconds, while your app is doing absoultely nothing, just telling the server the files to download. This is latency.
+                        <br />
+
+                        Your app has to load it's code, the latency of loading all those files sums up, and deteriorates user experience.
+
+
+                    </aside>
+
+                </section>
+
+                <!--
+
+                      ____   _    ____ _  __    _    ____ ___ _   _  ____        _   ___     ___    ____   ____ ____  ___ ____ _____
+                     |  _ \ / \  / ___| |/ /   / \  / ___|_ _| \ | |/ ___|      | | / \ \   / / \  / ___| / ___|  _ \|_ _|  _ \_   _|
+                     | |_) / _ \| |   | ' /   / _ \| |  _ | ||  \| | |  _    _  | |/ _ \ \ / / _ \ \___ \| |   | |_) || || |_) || |
+                     |  __/ ___ \ |___| . \  / ___ \ |_| || || |\  | |_| |  | |_| / ___ \ V / ___ \ ___) | |___|  _ < | ||  __/ | |
+                     |_| /_/   \_\____|_|\_\/_/   \_\____|___|_| \_|\____|   \___/_/   \_\_/_/   \_\____/ \____|_| \_\___|_|    |_|
+
+
+                -->
+
+
+                <section data-bottom-title="JavaScript csomagolás">
+
+                    <h2>JavaScript csomagolás</h2>
+
+
+
+                    <aside class="notes">
+
+
+                        To avoid the lag caused by loading a lots of files, you can always package the code, in one large file, this way we're only one request away from our web application
+                    </aside>
+
+                </section>
+
+                <section class="" data-bottom-title="JavaScript csomagolás">
+
+                    <div class="part-main figures organizedcode separatedfiles inlinescripts">
+                        <div class="fig fig-js fig-js-inline"><span>JS</span></div>
+                        <div class="fig fig-js org-1"><span>JS</span></div>
+                        <div class="fig fig-js org-2"><span>JS</span></div>
+                        <div class="fig fig-js org-3"><span>JS</span></div>
+                        <div class="fig fig-js org-4"><span>JS</span></div>
+
+                        <div class="fig fig-html"><span>HTML</span></div>
+
+                        <div class="fig fig-package"><span>PACKAGE</span></div>
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Csomagolás</h3>
+
+                        <ul class="fragment" data-figure="packagedcode">
+                            <li>Egy file</li>
+                            <li>Kevesebb HTTP kérés</li>
+                            <li>Tömörítés</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+
+                        The lag, caused by a lot of http requests, lowers
+                        <br />
+                        Packaging introduces some kind of a deployment strategy
+                        <br />
+                        Your nicely separated and organized codebase has to be packed in a file,
+                        you can compress it, or ran it through taskrunners during deploy
+                        <br />
+                        Code developed locally and deployed to production become two separated worlds,
+                        debugging them requires additional tools, or modified deployment processes
+                        <br />
+                        But if a single line is changed in the code, the whole deployed package gets deprecated,
+                        and the client has load it again.
+
+
+                    </aside>
+
+                </section>
+
+                <section class="" data-bottom-title="JavaScript csomagolás">
+
+                    <div class="part-main packagedcode">
+
+                        <div class="fig fig-package pkg-1"><span>PACKAGE</span></div>
+                        <div class="fig fig-package pkg-2"><span>PACKAGE</span></div>
+                        <div class="fig fig-package pkg-3"><span>PACKAGE</span></div>
+                        <div class="fig fig-package pkg-4"><span>PACKAGE</span></div>
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Particionált Csomagok</h3>
+
+                        <ul class="fragment" data-figure="partitionedpacks">
+                            <li>Kevesebb HTTP kérés</li>
+                            <li>Aloldalak, mini-alkalmazások</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+
+
+                        So you can try to partition the code to several packages, based on pages, features or any other aspect of your web application
+                        <br />
+                        - it is important to emphasise, that this code is packaged together according to a feature, or page on your site
+                        <br />
+                        Although this introduces a few more requests, the whole code is not deprecated when some component changes, only the affected packages.
+                        <br />
+                        This way of thinking introduces a completely new problem
+                    </aside>
+
+                </section>
+
+
+                <section class="" data-bottom-title="JavaScript csomagolás">
+
+                    <div class="part-main packagedcode partitionedpacks">
+
+                        <div class="fig fig-package pkg-1"><span>PACKAGE</span></div>
+                        <div class="fig fig-package pkg-3"><span>PACKAGE</span></div>
+
+                        <div class="fig fig-js mod-1"><span>modules/Foo</span></div>
+                        <div class="fig fig-js mod-2"><span>modules/Lorem</span></div>
+                        <div class="fig fig-js mod-3"><span>modules/Bar</span></div>
+
+                        <div class="fig fig-js mod-4"><span>modules/Foo</span></div>
+                        <div class="fig fig-js mod-5"><span>modules/Bar</span></div>
+                        <div class="fig fig-js mod-6"><span>modules/Ipsum</span></div>
+
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Átfedő függőségek</h3>
+
+                        <ul class="fragment" data-figure="overlappingdeps">
+                            <li>közös komponensek</li>
+                            <li>redundáns kód</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+
+
+                        If you partition your code in packages like these,
+                        there will be dependencies duplicated in some packages.
+                        <br />
+                        As dependencies overlap packages, they has to be included in all packages that need them.
+                        Eventually this leads to redundant and duplicated code in your deployed codebase in production
+
+
+                    </aside>
+
+                </section>
+
+                <section class="" data-bottom-title="JavaScript csomagolás">
+
+                    <div class="part-main packagedcode partitionedpacks overlappingdeps">
+
+                        <div class="fig fig-package pkg-1"><span>PACKAGE</span></div>
+                        <div class="fig fig-package pkg-3"><span>PACKAGE</span></div>
+
+                        <div class="fig fig-package pkg-4"><span>PACKAGE</span></div>
+
+                        <div class="fig fig-js mod-1"><span>modules/Foo</span></div>
+                        <div class="fig fig-js mod-2"><span>modules/Lorem</span></div>
+                        <div class="fig fig-js mod-3"><span>modules/Bar</span></div>
+
+                        <div class="fig fig-js mod-4"><span>modules/Foo</span></div>
+                        <div class="fig fig-js mod-5"><span>modules/Bar</span></div>
+                        <div class="fig fig-js mod-6"><span>modules/Ipsum</span></div>
+
+
+                        <div class="fig fig-js mod-7"><span>modules/Baz</span></div>
+                        <div class="fig fig-js mod-8"><span>modules/Qux</span></div>
+                        <div class="fig fig-js mod-9"><span>modules/Dolor</span></div>
+                        <div class="fig fig-js mod-10"><span>modules/Sit</span></div>
+
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>A "közös" hiba</h3>
+
+                        <p class="fragment" data-figure="commonpack">
+                            Többször, közösen használt kódot tegyük egy közös csomagba
+                        </p>
+
+
+                        <p class="fragment" data-figure="hugecommonpack">
+                            Ez assan egy hatalmas csomaghoz vezet
+                        </p>
+
+                    </div>
+
+                    <aside class="notes">
+
+
+
+                        If you try to solve it like we did, you can easily fall in a trap
+                        <br />
+                        Putting all the common dependencies to a common group might seem like a good idea,
+                        as all the shared components are available, and you've still got feature based packages
+                        <br />
+                        But with time, the 'common' group gets bigger and bigger, and you find yourself looking at a large inconvinient js package again
+
+
+
+
+
+                    </aside>
+
+                </section>
+
+                <!--
+
+                      _   _    _    _   _ ____  _     ___ _   _  ____    ____  _____ ____  _____ _   _ ____  _____ _   _  ____ ___ _____ ____
+                     | | | |  / \  | \ | |  _ \| |   |_ _| \ | |/ ___|  |  _ \| ____|  _ \| ____| \ | |  _ \| ____| \ | |/ ___|_ _| ____/ ___|
+                     | |_| | / _ \ |  \| | | | | |    | ||  \| | |  _   | | | |  _| | |_) |  _| |  \| | | | |  _| |  \| | |    | ||  _| \___ \
+                     |  _  |/ ___ \| |\  | |_| | |___ | || |\  | |_| |  | |_| | |___|  __/| |___| |\  | |_| | |___| |\  | |___ | || |___ ___) |
+                     |_| |_/_/   \_\_| \_|____/|_____|___|_| \_|\____|  |____/|_____|_|   |_____|_| \_|____/|_____|_| \_|\____|___|_____|____/
+
+
+                -->
+
+
+                <section data-bottom-title="Függőség Kezelés">
+
+                    <h2>Függőség Kezelés</h2>
+
+
+                    <aside class="notes">
+
+
+                        To take steps against these issues, first you've have to clearly define the dependencies of your code
+
+
+
+                    </aside>
+
+
+                </section>
+                <section data-bottom-title="Függőség Kezelés">
+
+                    <h3>Modul rendszerek</h3>
+
+
+                    <div class="part-onethird fragment" data-fragment-index="1">
+                        <div class="fragment shrink"  data-fragment-index="5">
+                            <h3 class="fragment grow"  data-fragment-index="4">CommonJS</h3>
+                        </div>
+                    </div>
+
+                    <div class="part-twothird fragment"  data-fragment-index="2">
+                        <h3 class="fragment grow" data-fragment-index="6">AMD</h3>
+                    </div>
+
+                    <div class="part-threethird fragment"  data-fragment-index="3">
+                        <div class="fragment shrink"  data-fragment-index="6">
+                            <h3 class="fragment grow" data-fragment-index="5">Harmony</h3>
+                        </div>
+                    </div>
+
+
+                    <aside class="notes">
+
+                        Several Module formats can help you with this, lets take the three most promising,
+                        CommonJS, AMD and ECMAScript Harmony modules
+                        <br /><br />
+                        CommonJS modules are widely considered as a module system for the server, for example nodejs uses CommonJS modules.
+                        Originally the CJS format only allowed one module per file, which makes it harder to use them in packages,
+                        together with other modules, which is clearly our goal here.
+                        <br /><br />
+
+                        Some day Harmony modules might be the standard module format of Javascript,
+                        They are really promising, they even propose a Loader API to access remote modules,
+                        but Harmony or EcmaScript version 6 is still under development.
+                        <br /><br />
+
+                        The features that AMD modules provide, may take us closest to our goal.
+                        AMD evolved out of the js framework called Dojo, and relies on their experience with AJAX and async loading in the browser.
+                        They are designed to be the modules for the client side.
+
+
+
+                    </aside>
+
+
+                </section>
+                <section data-bottom-title="Függőség Kezelés">
+
+                    <h3>Asynchronous Module Definition</h3>
+
+
+                    <div class="fragment font-code">
+                        <br />
+                        <br />
+                        <strong class="code-call">define</strong>(
+                        <span class="fragment"><strong class="code-literal">'name'</strong> ,</span>
+                        <span class="fragment">[ <strong class="code-literal">'dep1'</strong>, <strong class="code-literal">'dep2'</strong> ] ,</span>
+                        <span class="fragment"><strong class="code-keyword">function</strong> (<strong class="code-variable">dep1</strong>, <strong class="code-variable">dep2</strong>) { ... }</span> );
+                    </div>
+
+                    <aside class="notes">
+
+
+
+                        In short, AMD or Asynchronous Module Definition looks like this
+
+                        <br />
+                        You define a module, optionally with a custom name, but usually the name is the relative path of the file of the module
+                        <br />
+                        Next, you define it's dependencies, with a clear list as an array, where items are the module names
+                        <br />
+                        And last, the module definition itself, which is executed only if the dependencies are available, and can be passed in the module as arguments
+                        <br />
+                        The module structure itself encapsulates your code, helping to avoid polluting the global namespace.
+
+
+
+
+
+                    </aside>
+
+
+                </section>
+                <section data-bottom-title="Függőség Kezelés">
+
+                    <h3>Modul Kezelők</h3>
+
+                    <h4>Regisztrál</h4>
+                    <h4>Összekapcsol</h4>
+                    <h4>Letölt</h4>
+
+                    <p class="fragment"><em>requirejs, curljs</em></p>
+
+                    <aside class="notes">
+
+
+                        Module loaders are keeping all this together
+                        <br />
+                        They register modules by their path or name,
+                        connect them together in require and define calls,
+                        and if a module is unavailable, they fetch it from the remote source
+                        <br />
+                        Requirejs and curljs are such module loaders for example
+
+
+
+
+                    </aside>
+
+
+                </section>
+
+
+                <!--
+
+                         _    ______   ___   _  ____   _     ___    _    ____ ___ _   _  ____
+                        / \  / ___\ \ / / \ | |/ ___| | |   / _ \  / \  |  _ \_ _| \ | |/ ___|
+                       / _ \ \___ \\ V /|  \| | |     | |  | | | |/ _ \ | | | | ||  \| | |  _
+                      / ___ \ ___) || | | |\  | |___  | |__| |_| / ___ \| |_| | || |\  | |_| |
+                     /_/   \_\____/ |_| |_| \_|\____| |_____\___/_/   \_\____/___|_| \_|\____|
+
+
+                -->
+                <section data-bottom-title="Aszinkron Letöltés">
+
+
+                    <h2>Aszinkron Letöltés</h2>
+
+
+                    <aside class="notes">
+
+
+                        Fetching these modules during runtime, takes us to the topic of asynchronous loading
+
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Aszinkron Letöltés">
+
+
+
+
+                    <div class="part-main figures asyncloading">
+                        <div class="fig fig-server"><span>SERVER</span></div>
+                        <div class="fig fig-html"><span>CLIENT</span></div>
+
+                        <div class="fig fig-js fig-module"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep1"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep2"><span>JS</span></div>
+
+                        <div class="fig fig-js fig-required"></div>
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Aszinkron Modul Letöltés</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="do-require">Require</li>
+                            <li class="fragment" data-figure="fetch-module">Modul letöltése</li>
+                            <li class="fragment" data-figure="has-deps">Függőségek</li>
+                            <li class="fragment" data-figure="wait-deps">Függőségek letöltése</li>
+                            <li class="fragment" data-figure="module-available">A Modul elérhető</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+
+
+
+                        When we require one module from the module loader,
+                        <br />
+                        it fetches it, and parse the module definition for any dependencies
+                        <br />
+                        if there is any dependencies, starts to load them as well, one after the another
+                        until every module's dependency requirement is met,
+                        <br />
+                        after this, the original requested module become available
+                        <br />
+                        this is great in a way, just think about it
+
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="Aszinkron Letöltés">
+
+
+                    <div class="part-side">
+                        <h3>Függőségi Gráf</h3>
+
+                        <ul class="fragment" data-figure="dep-graph">
+                            <li>A kódbázis definiálja,</li>
+                            <li>nem a termék vagy weboldal</li>
+
+                        </ul>
+                    </div>
+
+
+                    <div class="part-main figures dependencygraph">
+
+                        <div class="fig fig-js fig-module"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep1"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep2"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep3"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep4"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep5"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep6"><span>JS</span></div>
+
+                        <div class="svg svg-deparrow svg-arrow1">
+                            <img src="images/fig-deparrow.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow2">
+                            <img src="images/fig-deparrow.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow3">
+                            <img src="images/fig-deparrow-left.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow4">
+                            <img src="images/fig-deparrow-right.svg" width="132" height="27">
+                        </div>
+
+
+                    </div>
+
+
+                    <aside class="notes">
+
+                        The codebase itself defines the dependency tree to download, not some feature based package
+                        <br />
+                        Async loading also enables us to lazy load features on our site
+                        <br />
+                        For example a media player, or an editor, or some miniauture application presented in an modal overlay,
+                        which is not really needed, until a user interaction or some other event makes it necessary
+                        <br />
+                        Then we can asynchronously load the code for it, and keeping the initial page payload lightweight
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="Aszinkron Letöltés">
+
+                    <div class="part-main figures dep-graph downsides dependencygraph">
+
+                        <div class="fig fig-js fig-module"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep1"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep2"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep3"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep4"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep5"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep6"><span>JS</span></div>
+
+                        <div class="svg svg-deparrow svg-arrow1">
+                            <img src="images/fig-deparrow.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow2">
+                            <img src="images/fig-deparrow.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow3">
+                            <img src="images/fig-deparrow-left.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow4">
+                            <img src="images/fig-deparrow-right.svg" width="132" height="27">
+                        </div>
+                    </div>
+
+                    <div class="part-side">
+                        <h3>A sötét oldal</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="transdeps">Tranzitív függőségek</li>
+                            <li class="fragment" data-figure="waterfall">HTTP kérések zuhataga</li>
+
+                        </ul>
+                    </div>
+
+
+
+                    <aside class="notes">
+
+                        However there is a catch,
+                        <br />
+                        If we collect a module's dependencies and the dependencies of those modules and so on,
+                        recursively, that is called transitive dependencies
+                        <br />
+                        By using pure async loading, with a series of transitive dependencies
+                        we hit ourselves with a huge waterfall of http requests
+                        <br />
+                        And from early experience, we know that has latency, and slows down our application
+                        <br />
+                        During development, it can be really comfortable, but in production, it can cause problems
+
+
+                    </aside>
+
+                </section>
+
+                <!--
+
+                         _    ______   ___   _  ____    ____   _    ____ _  __    _    ____ _____ ____
+                        / \  / ___\ \ / / \ | |/ ___|  |  _ \ / \  / ___| |/ /   / \  / ___| ____/ ___|
+                       / _ \ \___ \\ V /|  \| | |      | |_) / _ \| |   | ' /   / _ \| |  _|  _| \___ \
+                      / ___ \ ___) || | | |\  | |___   |  __/ ___ \ |___| . \  / ___ \ |_| | |___ ___) |
+                     /_/   \_\____/ |_| |_| \_|\____|  |_| /_/   \_\____|_|\_\/_/   \_\____|_____|____/
+
+
+                -->
+
+
+                <section data-bottom-title="Aszinkron Csomagok">
+
+                    <h2>Aszinkron Csomagok</h2>
+
+
+                    <aside class="notes">
+
+                        Lets try to combine packaging with async loading,
+                        so we pack the needed code, and minimize requests
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Aszinkron Csomagok">
+
+
+                    <div class="part-main figures asyncpackage">
+                        <div class="fig fig-server"><span>SERVER</span></div>
+                        <div class="fig fig-html"><span>CLIENT</span></div>
+
+
+                        <div class="fig fig-package">
+                            <div class="fig fig-js fig-module"><span>JS</span></div>
+                            <div class="fig fig-js fig-dep1"><span>JS</span></div>
+
+                            <span>PACKAGE</span>
+                        </div>
+
+                        <div class="fig fig-js fig-required"></div>
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Aszinkron Csomagok</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="do-require">Require</li>
+                            <li class="fragment" data-figure="fetch-module">Csomag letöltése</li>
+                            <li class="fragment" data-figure="module-available">A modul elérhető</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+
+                        This sounds like an optimal solution,
+                        <br />
+                        We make a request, the package arrives, and all our dependencies are instanly met,
+                        the modul is available
+
+
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Aszinkron Csomagok" class="">
+
+                    <div class="part-main figures fetch-module module-available asyncpackage">
+                        <div class="fig fig-server"><span>SERVER</span></div>
+                        <div class="fig fig-html"><span>CLIENT</span></div>
+
+
+                        <div class="fig fig-package">
+                            <div class="fig fig-js fig-module"><span>JS</span></div>
+                            <div class="fig fig-js fig-dep1"><span>JS</span></div>
+                            <strong>?</strong>
+                            <span>PACKAGE</span>
+                        </div>
+
+                        <div class="fig fig-js fig-required"></div>
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Hol a hiba?</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="whichpackage">Melyik csomagot?</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+
+                        But there's always a but
+                        <br />
+                        But how will the client know which package to download?
+                        <br />
+                        In which package the requested module is packed?
+                        <br />
+                        And how will the server keep those modules load again, that has been served previously?
+                        <br />
+                        We could give the client a manifest of all our modules and packages
+                        but that still does not solves the problem of the overlapping dependencies,
+                        and with a large codebase, it would put a large overhead on every pageload
+
+
+                    </aside>
+
+                </section>
+
+
+
+
+                <section data-bottom-title="Körbe-körbe?">
+
+                    <h2>Ugyanazokat a köröket futjuk, újra és újra?</h2>
+
+
+                    <aside class="notes">
+
+                        So we kept trying, and always hit the wall, http request count versus large, inconvenient file.
+                        <br />
+                        Felt like walking in circles.
+                        <br />
+                        But then, in 2012 on JSconf EU
+                        <br />
+                        there was a talk about how gmail and google plus handle the same exact problem
+
+                    </aside>
+
+
+                </section>
+
+                <!--
+
+                      _   _ _____ ____    _  _____ _____     _______    _     ___    _    ____ ___ _   _  ____
+                     | \ | | ____/ ___|  / \|_   _|_ _\ \   / / ____|  | |   / _ \  / \  |  _ \_ _| \ | |/ ___|
+                     |  \| |  _|| |  _  / _ \ | |  | | \ \ / /|  _|    | |  | | | |/ _ \ | | | | ||  \| | |  _
+                     | |\  | |__| |_| |/ ___ \| |  | |  \ V / | |___   | |__| |_| / ___ \| |_| | || |\  | |_| |
+                     |_| \_|_____\____/_/   \_\_| |___|  \_/  |_____|  |_____\___/_/   \_\____/___|_| \_|\____|
+
+
+                -->
+
+
+
+                <section data-bottom-title="Negatív Letöltés">
+
+                    <h2>A Negatív Letöltés</h2>
+
+
+                    <aside class="notes">
+                        They presented an idea called Negative Loading
+
+                    </aside>
+
+
+                </section>
+                <section data-bottom-title="Negatív Letöltés">
+
+                    <h3>JSConf EU 2012</h3>
+
+                    <h4>Malte Ubl & John Hjelmstad</h4>
+
+                    <p>Google / GMail</p>
+
+                    <aside class="notes">
+
+                        these two fine gentlemen had a nice presentation about it,
+                        and it blew me away
+                        <br />
+                        first it was good to know we're not alone with this problem
+                        second, the solution itself was quite elegant, let me show you
+
+
+
+                    </aside>
+
+
+                </section>
+                <section data-bottom-title="Negatív Letöltés">
+
+
+                    <div class="part-side">
+                        <h3>Az első kérés</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="request">Kérés</li>
+                            <li class="fragment" data-figure="pac">Függőségek csomagolása</li>
+                            <li class="fragment" data-figure="serve">Kiszolgálás</li>
+                            <li class="fragment" data-figure="register">A kért modulok regisztrálása</li>
+                        </ul>
+                    </div>
+
+                    <div class="part-main figures negativeloading">
+
+                        <div class="fig fig-server"><span>SERVER</span></div>
+                        <div class="fig fig-html"><span>HTML</span></div>
+
+                        <div class="font-code req1"><span> + </span>mod/Foo</div>
+                        <div class="font-code req2"><span>+</span>mod/Bar<span>-mod/Foo</span></div>
+
+
+
+                        <div class="fig fig-js fig-module1"><span>mod/Foo</span></div>
+                        <div class="fig fig-js fig-dep11"><span>dep1</span></div>
+                        <div class="fig fig-js fig-dep12"><span>dep2</span></div>
+                        <div class="fig fig-js fig-dep13"><span>dep3</span></div>
+                        <div class="fig fig-js fig-dep14"><span>dep4</span></div>
+
+                        <div class="fig fig-package fig-pak1"></div>
+
+
+
+                        <div class="fig fig-package fig-pak2"><span>PACKAGE</span></div>
+
+                    </div>
+
+
+                    <aside class="notes">
+
+
+                        We simply request a module from the server
+                        <br />
+                        The server collects all dependencies of the module
+                        <br />
+                        Packs it, and serves it
+                        <br />
+                        The loader registers the required modules,
+                        not those that were received, but those that were required
+
+                        <br />
+
+                        this is important because
+                    </aside>
+
+
+                </section>
+                <section data-bottom-title="Negatív Letöltés">
+
+
+
+                    <div class="part-main figures negativeloadingsteptwo">
+
+                        <div class="fig fig-server"><span>SERVER</span></div>
+                        <div class="fig fig-html"><span>HTML</span></div>
+
+                        <div class="font-code req1"><span> + </span>mod/Foo</div>
+                        <div class="font-code req2"><span> + </span>mod/Bar<span> - mod/Foo</span></div>
+
+
+
+                        <div class="fig fig-js fig-jsprev fig-module1"><span>mod/Foo</span></div>
+                        <div class="fig fig-js fig-jsprev fig-dep1"><span>dep1</span></div>
+                        <div class="fig fig-js fig-jsprev fig-dep2"><span>dep2</span></div>
+                        <div class="fig fig-js fig-jsprev fig-dep3"><span>dep3</span></div>
+                        <div class="fig fig-js fig-jsprev fig-dep4"><span>dep4</span></div>
+
+
+                        <div class="fig fig-js fig-jsreq fig-module2"><span>mod/Bar</span></div>
+                        <div class="fig fig-js fig-jsreq fig-dep1"><span>dep1</span></div>
+                        <div class="fig fig-js fig-jsreq fig-dep5"><span>dep5</span></div>
+                        <div class="fig fig-js fig-jsreq fig-dep3"><span>dep3</span></div>
+                        <div class="fig fig-js fig-jsreq fig-dep6"><span>dep6</span></div>
+
+                        <div class="fig fig-package fig-pak1"></div>
+
+
+
+                        <div class="fig fig-package fig-pak2"><span></span></div>
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>További kérések</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="subtract">Kérés</li>
+                            <li class="fragment" data-figure="find">Dependenciák összegyűjtése</li>
+                            <li class="fragment" data-figure="diff">Kivonás</li>
+                            <li class="fragment" data-figure="serve">Kiszolgálás</li>
+                            <li class="fragment" data-figure="register">A kért modulok regisztrálása</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+                        On the next request the client sends the requested module name,
+                        and the list of all those modules that have been requested so far
+                        <br /><br />
+                        In the url, the requested modules are prefixed with a plus sign as it is an addition,
+                        they are the included modules
+                        <br /><br />
+                        The modules, that have been already requested are prefixed with a subtraction sign,
+                        - thus the name "negative loading" - and they are the excluded modules.
+                        <br /><br />
+
+                        the server collects all the transitive dependencies of the included modules
+                        <br />
+                        but also collects all the transitive dependencies of the excluded modules
+                        <br /><br />
+                        Then it simply subtracts all the excluded modules, from the included modules, and only the delta will be packed and served.
+                        <br />
+                        This way only those modules are served that are not at the client,
+                        and it does this asynchronously
+                        <br />
+                        All requested modules are registered, for further requests, to keep their dependencies from downloading again
+
+
+                    </aside>
+
+
+                </section>
+                <section data-bottom-title="Negatív Letöltés">
+
+                    <h2>A JavaScript többé nem egy statikus file valami szerveren</h2>
+
+                    <h4>A függőség kezelés, feloldás a szerveren történik</h4>
+
+
+
+
+                    <aside class="notes">
+
+
+                        From now on we cant just say that javascript is a static asset,
+                        the dependency handling is done at the server side
+                        by every request
+                        <br /><br />
+
+                        Last year I talked to one of these guys, about their solution
+                        and he kind of admitted, that some of their ideas and solutions that get out of google,
+                        are deliberately not made into an existing open sourced product,
+                        simply because they dont have the time to maintain it for others
+                        <br /><br />
+                        so they spred the idea and wait for someone to grab onto it
+                        <br />
+                        as we were stuck with this whole problem at that time, we were
+                        happy to start to work on some more general and open sourced solution,
+                        using negative loading
+
+                    </aside>
+
+
+                </section>
+
+
+
+                <!--
+
+                          _ __  __ ____
+                         | |  \/  / ___|
+                      _  | | |\/| \___ \
+                     | |_| | |  | |___) |
+                      \___/|_|  |_|____/
+
+
+                -->
+
+
+                <section data-bottom-title="JMS">
+
+                    <h2>JavaScript Module Server</h2>
+
+
+                    <aside class="notes">
+                        And this is what we've come up with so far
+                        <br /><br />
+                        We currently call it javascript module server,
+                        <br /><br />
+                        Honestly at ustream we're not really good with giving names to such things
+                        <br />
+                        i could bore you with acronyms starting with the letter U,
+                        but that is for another talk
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="JMS">
+
+
+                    <div class="part-main figures jmsidealfor">
+                        <div class="svg svg-spa"><img src="images/fig-spa.svg" width="200" height="200" /></div>
+                        <div class="svg svg-ux"><img src="images/fig-ux.svg" width="200" height="200" /></div>
+                        <div class="svg svg-sloc"><img src="images/fig-sloc.svg" width="200" height="200" /></div>
+                        <div class="svg svg-time"><img src="images/fig-time.svg" width="200" height="200" /></div>
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Ideális alkalmazások</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="spa">Single Page Application</li>
+                            <li class="fragment" data-figure="sloc">Nagy JS kódbázis</li>
+                            <li class="fragment" data-figure="ux">Felhasználói Élmény</li>
+                            <li class="fragment" data-figure="time">Hosszú látogatási idő</li>
+                        </ul>
+                    </div>
+
+
+                    <aside class="notes">
+
+                        so, JMS
+                        <br />
+                        JMS is great for single page applications,
+                        with less pageloads and more ajax requests or websocket streaming
+                        <br />
+                        Apps with a large javascript codebase
+                        <br />
+                        Where you're like quick pageloads, and user experience matters
+                        <br />
+                        And pages with long user visit times
+
+                        <br />
+                        We thought that ustream, as a live video streaming platform, is such an application
+                        so we felt the need, to deliver our code the most effective way
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="JMS">
+
+                    <h3>JMS</h3>
+
+                    <p>AMD modul szerver JavaScripthez</p>
+                    <p>Hatékony, aszinkron kiszolgálás</p>
+                    <p>Élesítési keretrendszer</p>
+
+
+
+                    <aside class="notes">
+
+
+
+                        JMS is an AMD module server for Javascript
+                        <br />
+                        It serves these modules in a fast and efficient way.
+                        <br />
+                        Since it has to process the whole codebase, to serve,
+                        it's also a deployment framework
+
+
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="JMS" class="jmstechintro">
+
+                    <h3>JMS</h3>
+
+                    <div class="svg svg-node">
+                        <img src="images/nodejs.svg" width="200" height="200" />
+                    </div>
+
+
+                    <div class="svg svg-redis">
+                        <img src="images/redis-logo.svg" width="200" height="200" />
+                    </div>
+
+                    <p>Node.js-ben fejlesztve</p>
+
+                    <p>Adattárolás Redisben</p>
+
+                    <p>Állapotmentes szerver architektúra</p>
+
+                    <aside class="notes">
+
+
+                        Its developed in nodejs
+                        <br /><br />
+
+                        Stores data in redis, or in any other key-value store
+                        <br /><br />
+                        And since its output is defined only by the user's request,
+                        its a scaleable stateless server architecture
+
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="JMS">
+
+                    <h3>Hogyan működik</h3>
+
+
+                    <div class="figures howitworks">
+
+
+                        <div class="svg svg-redis">
+                            <img src="images/redis-logo.svg" width="100" height="100" />
+                        </div>
+                        <div class="svg svg-hdds">
+                            <img src="images/fig-hdd.svg" width="100" height="100" />
+                        </div>
+                        <div class="fig fig-server"><span>JMS</span></div>
+                        <div class="fig fig-html"><span>HTML</span></div>
+
+                        <div class="fig fig-js fig-jmsc"><span>CLIENT</span></div>
+
+                        <div class="arrow to-right deploy"></div>
+                        <div class="arrow to-left request"></div>
+                        <div class="arrow to-left data"></div>
+                        <div class="arrow to-right serve"></div>
+                    </div>
+
+
+                    <div class="fragment" data-figure="step1"></div>
+                    <div class="fragment" data-figure="step2"></div>
+                    <div class="fragment" data-figure="step3"></div>
+                    <div class="fragment" data-figure="step4"></div>
+
+
+                    <aside class="notes">
+
+                        This is how it works
+                        <br /><br />
+
+                        The codebase you want to serve is deployed and stored in Redis
+                        <br />
+                        JMS serves it's own client, which handles requests
+                        <br /><br />
+                        with every request, JMS goes back to Redis for version numbers or modules
+                        <br /><br />
+                        JMS calculates the package to be served by making diffs on the dependency graphs
+                        and serves the package to the client
+                        <br /><br />
+
+                        I would like to talk about five interesting aspects of JMS
+
+                        the client loader
+                        deploying to JMS
+                        caching
+                        scaling
+                        and a plugin system, we've developed for it
+
+
+
+                    </aside>
+
+                </section>
+
+
+                <!--
+
+                          _ __  __ ____      ____ _     ___ _____ _   _ _____
+                         | |  \/  / ___|    / ___| |   |_ _| ____| \ | |_   _|
+                      _  | | |\/| \___ \   | |   | |    | ||  _| |  \| | | |
+                     | |_| | |  | |___) |  | |___| |___ | || |___| |\  | | |
+                      \___/|_|  |_|____/    \____|_____|___|_____|_| \_| |_|
+
+
+                -->
+
+
+                <section data-bottom-title="JMS kliens">
+
+                    <h2>A JMS kliens</h2>
+
+
+                    <aside class="notes">
+
+
+
+                        First, the client
+
+                        JMS serves it's own client, with the latest codebase version number available to serve
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="JMS kliens">
+
+                    <div class="part-main figures jmsclient">
+
+                        <div class="fig fig-server"><span>JMS</span></div>
+                        <div class="fig fig-html"><span>HTML</span></div>
+
+                        <div class="fig fig-js fig-jmsc"><span>JMSC</span></div>
+
+                        <div class="fig fig-package fig-pak1"><span>PACKAGE</span></div>
+                        <div class="fig fig-package fig-pak2"><span>PACKAGE</span></div>
+
+                        <div class="arrow to-right fetch-one"></div>
+                        <div class="arrow to-right fetch-two"></div>
+
+                        <div class="font-code req1">+apps/Foo</div>
+                        <div class="font-code req2">+apps/Bar-apps/Foo</div>
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>JMS Kliens</h3>
+
+                        <ul >
+                            <li class="fragment" data-figure="serveclient">Kliens kiszolgálás</li>
+                            <li class="fragment" data-figure="handleamd">AMD modul kezelés</li>
+                            <li class="fragment" data-figure="fetch">Letöltés</li>
+                            <li class="fragment" data-figure="register">Regisztrálás</li>
+                            <li class="fragment" data-figure="order">Sorrend</li>
+                        </ul>
+                    </div>
+
+
+                    <aside class="notes">
+
+                        This is how it goes
+                        <br />
+                        JMS serves the client
+                        The client handles AMD modules, just like a module loader
+                        <br />
+                        Using the require calls, it fetches modules from the JMS server
+                        <br />
+                        Registers the requested modules for the negative loading method
+                        <br />
+                        And ensures the module execution order
+                        <br />
+                        this can be an issue with async loading, a large package can arrive later than a small package that was required afterwards, simply because the large package takes more time to download
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="JMS kliens">
+
+                    <h4>Redundáns kérések</h4>
+
+                    <h4>Körkörös függőségek</h4>
+
+
+                    <aside class="notes">
+
+
+
+                        If your code requires a module, that have been already downloaded, the module loader resolves that request without fetching it again.
+                        Since JMS pack transitive dependencies for modules, the already downloaded module will have all it's depencies available.
+                        <br /><br />
+                        JMS handles circular dependencies during packaging, and serves those modules,
+                        but AMD itself does not protect you from such anomalies.
+                        <br /><br />
+                        Circular dependencies are rare issues, and usually mean that your code needs restructuring,
+                        but in some cases if they are needed, the loader has the tools to help you resolve situations like this.
+
+
+
+
+
+
+                    </aside>
+
+                </section>
+
+
+
+                <section data-bottom-title="JMS kliens">
+
+                    <h3>Kliens betöltése</h3>
+
+ <pre><code data-trim>
+<link rel="dns-prefetch" href="//jms.domain.com">
+<script type="text/javascript">
+    var jms = {
+        baseURL: 'jms.domain.com/',
+        locale: 'en_US'
+    };
+    (function() {
+        jms.pre = [], jms.baseURL = ('https:' == document.location.protocol ? 'https://' : 'http://') + jms.baseURL;
+        var jmsrc = document.createElement('script'); jmsrc.type = 'text/javascript';
+        jmsrc.src = jms.baseURL + 'client.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(jmsrc, s);
+        window.require = function(){ jms.pre.push(arguments) }
+    })();
+</script>
+     ...
+<script type="text/javascript">
+    require(['apps/Main'], function(MainApp) {
+        MainApp.init(); // or smtg like this
+    });
+</script>
+</code></pre>
+
+
+                    <aside class="notes">
+
+
+                        On the client side, the jms client is loaded like any modern 3rdparty script today,
+                        using a set of parameters, and loading the client
+                        <br />
+                        While loading the client, it already collects require calls, so after the client embed, we can require our modules instantly
+                        <br />
+                        After the client has arrived, it sets up the latest codebase version - currently using a HTTP OPTIONS request for that, and fires any require calls that occured during the client load
+
+
+
+                    </aside>
+
+                </section>
+
+
+                <section data-bottom-title="JMS kliens">
+
+                    <h3>A JMS kliens</h3>
+
+                    <h4>Almond.js + JMSloader</h4>
+
+
+                    <aside class="notes">
+
+
+                        The client itself is based on a module loader called almond js, which is a simpler version of the requirejs module loader, designed for packaged modules.
+                        <br />
+                        We've put the JMS loader on almondjs, which loads modules, and registers them,
+                        to handle negative loading.
+
+
+
+
+
+                    </aside>
+
+                </section>
+
+                <!--
+
+                      ____  _____ ____  _     _____   __
+                     |  _ \| ____|  _ \| |   / _ \ \ / /
+                     | | | |  _| | |_) | |  | | | \ V /
+                     | |_| | |___|  __/| |__| |_| || |
+                     |____/|_____|_|   |_____\___/ |_|
+
+
+                -->
+
+                <section data-bottom-title="Élesítés">
+
+                    <h2>Élesítés</h2>
+
+                    <aside class="notes">
+
+
+                        Deploying is a process in the background, it does not affect the active servers
+
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="Élesítés">
+
+
+                    <div class="part-side">
+                        <h3>Élesítés</h3>
+
+                        <ul class="fragment" data-figure="duringdeploy">
+
+                            <li class="fragment" data-figure="errcheck">Kód ellenőrzés</li>
+                            <li class="fragment" data-figure="depgraph">Függőségek</li>
+                            <li class="fragment" data-figure="plugins">Pluginek</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="part-main figures jmsdeploy">
+
+                        <div class="svg svg-redis">
+                            <img src="images/redis-logo.svg" width="100" height="100" />
+                        </div>
+                        <div class="svg svg-hdds">
+                            <img src="images/fig-hdd.svg" width="100" height="100" />
+                        </div>
+
+                        <div class="arrow to-right"></div>
+
+                        <div class="svg svg-errchk">
+                            <img src="images/fig-errcheck.svg" width="100" height="100" />
+                        </div>
+                        <div class="svg svg-deps">
+                            <img src="images/fig-deps.svg" width="100" height="100" />
+                        </div>
+                        <div class="svg svg-plugins">
+                            <img src="images/fig-plugins.svg" width="100" height="100" />
+                        </div>
+                    </div>
+
+                    <aside class="notes">
+
+                        Currently JMS uses Redis for this it's data management, because of two reasons
+                        <br /><br />
+                        First, the asynchronous evented I/O that Node use, performs poorly when reading from disks,
+                        and we did not want to have a slower solution than our current one
+                        <br /><br />
+                        Second, we could store the data simply in the memory of JMS, but then it would be more complicated to scale it properly
+                        <br /><br />
+                        If you're not familiar with Redis, its an open source fast and advanced key-value storage,
+                        that aims high performance by working with an in-memory dataset. That dataset gets persistent,
+                        by dumping it to disk every once in a while, but serving data is done from memory.
+                        <br /><br />
+                        To keep serving modules fast, it's best to do the CPU heavy processing tasks at deploy time.
+                        <br /><br />
+                        During deploy the code gets a basic error checking.
+                        JMS has to extract the dependencies from the codebase, so it runs through the modules using a tool,
+                        called Esprima.
+                        <br /><br />
+                        Esprima is an ECMAscript parser, that can create an abstract source tree from the javascript modules.
+                        Traversing through this source tree, we can easily find the dependencies for the modules.
+                        If the code has some fundamental error, Esprima cannot parse it, and returns error.
+                        This way it prevents malfunctioning code to get into production.
+                        <br /><br />
+                        Using Esprima, JMS creates a dependency graph of the modules,
+                        and runs any other task we want, with the help of the plugins
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Élesítés">
+
+
+
+                    <h3>Verziózás</h3>
+
+                    <h3>Hibakezelés</h3>
+
+
+
+                    <aside class="notes">
+
+
+                        At the end of the deploy, the JMS assings a new version number to the deployed code,
+                        and starts serving it
+                        <br />
+                        If any of these tasks have an error,
+                        the deploy fails, and the version won't be live
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="Élesítés" class="taskrunners">
+
+                    <h3>Task runners</h3>
+
+                    <div class="svg svg-grunt">
+                        <img src="images/grunt.svg" width="200" height="200" />
+                    </div>
+
+                    <div class="svg svg-gulp">
+                        <img src="images/gulp.png" height="200" />
+                    </div>
+
+                    <aside class="notes">
+
+
+
+                        Beside our plugins, we plan to channel in other task runners,
+                        like grunt or gulp, to work with JMS deployment
+
+
+
+
+                    </aside>
+
+                </section>
+
+
+
+
+                <section data-bottom-title="Több kódbázis">
+
+                    <h2>Több, elkülönülő kódbázis</h2>
+
+
+                    <aside class="notes">
+
+                        JMS can deploy and serve multiple js codebases
+
+                    </aside>
+
+                </section>
+
+
+                <section data-bottom-title="Több kódbázis">
+
+
+
+                    <div class="figures repos">
+
+                        <div class="repo-url repo1 font-code">/live</div>
+                        <div class="repo-url repo2 font-code">/pre</div>
+                        <div class="repo-url repo3 font-code">/dev</div>
+
+
+                        <div class="fig fig-js repo repo1"><span>live</span></div>
+                        <div class="fig fig-js repo repo2"><span>pre</span></div>
+                        <div class="fig fig-js repo repo3"><span>dev</span></div>
+
+                        <div class="fig fig-server"><span>JMS</span></div>
+
+                        <div class="fig fig-redis">
+                            <div class="svg svg-redis">
+                                <img src="images/redis-logo.svg" width="100" height="100" />
+                            </div>
+                        </div>
+
+                        <div class="arrow to-right repo1"></div>
+                        <div class="arrow to-right repo2"></div>
+                        <div class="arrow to-right repo3"></div>
+
+
+                        <div class="line repo12"></div>
+                        <div class="line repo23"></div>
+
+
+
+                        <div class="fragment" data-figure="codebases"></div>
+                        <div class="fragment" data-figure="tworedis"></div>
+                        <div class="fragment" data-figure="morecache"></div>
+
+                    </div>
+
+                    <aside class="notes">
+
+                        JMS can deploy and serve multiple js codebases
+
+                    </aside>
+
+                </section>
+
+                <!--
+
+                       ____    _    ____ _   _ _____
+                      / ___|  / \  / ___| | | | ____|
+                     | |     / _ \| |   | |_| |  _|
+                     | |___ / ___ \ |___|  _  | |___
+                      \____/_/   \_\____|_| |_|_____|
+
+
+                -->
+
+
+                <section data-bottom-title="Cache & Verziózás">
+
+                    <h2>Cache<br />
+                        &<br />
+                        Verziózás</h2>
+
+
+                    <aside class="notes">
+
+
+                        Caching output is a very important factor in web performance, whether we talk about clientside browser caches or content delivery networks
+
+                    </aside>
+
+                </section>
+
+
+                <section data-bottom-title="Cache & Verziózás">
+
+                    <h3>Egyedi URL-ek</h3>
+
+
+                    <p class="font-code"> / kódbázis / <strong>verzió</strong> /  + modulok - modulok</p>
+
+                    <p><br/><br/>Nagyon rossz</p>
+
+                    <aside class="notes">
+
+                    </aside>
+
+                </section>
+
+
+                <section data-bottom-title="Cache & Verziózás">
+
+                    <h3>Egyedi URL-ek</h3>
+
+                    <p class="font-code"> / kódbázis /  + modulok - modulok</p>
+
+                    <p><br/><br/>A modul neveknek kell hordozniuk a verzió információt</p>
+
+                    <aside class="notes">
+                        JMS currently serves javascript modules with a unique url
+                        <br /><br />
+                        Every given url will give back the delta of the required and excluded module dependencies
+                        from a codebase version in the accessed codebase
+                        <br /><br />
+                        Extra parameters can be passed along the request, for example a locale, they should not break this behaviour
+                        <br /><br />
+
+                    </aside>
+
+                </section>
+
+
+
+                <section data-bottom-title="Cache & Verziózás">
+
+                    <h3>Verziózott modulnevek</h3>
+
+                    <h4 class="fragment" data-fragment-index="1">apps/Main + 2014-04-29T11:49:22.000Z</h4>
+                    <h4 class="fragment" data-fragment-index="2">2413570658</h4>
+                    <h4 class="fragment" data-fragment-index="3">8fdc2a62</h4>
+
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Modul név + Módosítás ideje</li>
+                        <li class="fragment" data-fragment-index="2">CRC összeg </li>
+                        <li class="fragment" data-fragment-index="3">hexadecimálisan</li>
+                        <li class="fragment" data-fragment-index="4">lecserélve <strong>minden</strong> használati helyen</li>
+                    </ul>
+
+                    <aside class="notes">
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Cache & Verziózás" class="dep-graph">
+
+                    <div class="part-side">
+                        <h3>Megváltozott függőségi útvonalak</h3>
+
+                        <ul>
+                            <li class="fragment" data-figure="changes">Egy modul megváltozik</li>
+                            <li class="fragment" data-figure="propagate">A változása végigcsorog a függőségi gráfon</li>
+                            <li class="fragment" data-figure="affected">Csak az érintett modulok</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="part-main figures dependencygraph deppaths">
+
+                        <div class="fig fig-js fig-module"><span>JS</span></div>
+                        <div class="fig fig-js fig-module2"><span>JS</span><small>v2</small></div>
+
+                        <div class="fig fig-js fig-dep1"><span>JS</span></div>
+
+                        <div class="fig fig-js fig-dep2"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep22"><span>JS</span><small>v2</small></div>
+
+                        <div class="fig fig-js fig-dep3"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep4"><span>JS</span></div>
+
+                        <div class="fig fig-js fig-dep5"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep52"><span>JS</span><small>v2</small></div>
+
+                        <div class="fig fig-js fig-dep6"><span>JS</span></div>
+                        <div class="fig fig-js fig-dep62"><span>JS</span><small>v2</small></div>
+
+                        <div class="svg svg-deparrow svg-arrow1">
+                            <img src="images/fig-deparrow-right.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow2">
+                            <img src="images/fig-deparrow.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow3">
+                            <img src="images/fig-deparrow-left.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow4">
+                            <img src="images/fig-deparrow-left.svg" width="132" height="27">
+                        </div>
+                        <div class="svg svg-deparrow svg-arrow5">
+                            <img src="images/fig-deparrow-left.svg" width="132" height="27">
+                        </div>
+
+                    </div>
+
+
+
+                    <aside class="notes">
+
+                    </aside>
+
+                </section>
+
+
+
+
+                <section data-bottom-title="Cache & Verziózás">
+
+                    <div class="part-main figures versionhandling">
+
+                        <div class="fig fig-server"><span>JMS</span></div>
+
+                        <div class="fig fig-html"><span>HTML</span></div>
+
+                        <div class="fig fig-js fig-jmsc"><span>JMSC v42</span></div>
+
+                        <div class="fig fig-package fig-pak1"><span>v42</span></div>
+                        <div class="fig fig-package fig-pak2"><span>v43</span></div>
+
+                        <div class="arrow to-right"></div>
+
+
+
+                    </div>
+
+                    <div class="part-side">
+                        <h3>Verzió Kezelés</h3>
+
+                        <ul >
+
+                            <li class="fragment" data-figure="loadv42">Kliens indul</li>
+                            <li class="fragment" data-figure="bound">Verzióhoz kötve</li>
+                            <li class="fragment" data-figure="deploy">Új kód élesedik</li>
+                            <li class="fragment" data-figure="remain">A kliens marad a megkezdett verziónál</li>
+
+                        </ul>
+                    </div>
+
+
+
+                    <aside class="notes">
+
+                        What happens when we deploy a new version of the codebase?
+                        <br />
+                        The client initializes with the current version of the codebase,
+                        in fact it's bound to that version. Every asynchronous module request after this pageload will address the same version
+                        <br />
+                        If a new version is deployed on the JMS, and becomes the latest version
+                        the client keeps using the old one, until the client is fetched again in a page load
+                        <br />
+                        The JMS can serve a number of old versions, this number is configurable by your needs
+                        <br />
+                        This way we avoid the problem of collindig different versions of the same codebase.
+
+
+
+
+                    </aside>
+
+                </section>
+
+
+
+
+                <section data-bottom-title="Cache & Verziózás">
+
+                    <h3>Re-Validation</h3>
+
+                    <h4>Belső cache <br /><em>(főleg CPU idő spórolásra)</em></h4>
+
+
+                    <aside class="notes">
+                        JMS Support content re-validation by correctly handling the If-Modified-Since header
+                        <br />
+                        <br />
+                        This means that the client or caching server can ask JMS about a cached module, if it can be used, or there is a new version available since a timestamp - passed in by the If-Modified-Since
+                        header.
+                        <br /><br />
+                        The JMS either tells the client that yes, the content it has, is still fresh (http status 304) or it can send a more fresh version of the requested modules, telling the client it’s new date of creation.
+                        <br /><br />
+                        it also has an internal cache for previously served urls,
+                        but that is mostly to save CPU time on the clusters
+
+
+
+                    </aside>
+
+                </section>
+
+
+
+
+                <!--
+
+                  ____   ____    _    _     _____
+                 / ___| / ___|  / \  | |   | ____|
+                 \___ \| |     / _ \ | |   |  _|
+                  ___) | |___ / ___ \| |___| |___
+                 |____/ \____/_/   \_\_____|_____|
+
+
+                -->
+
+
+                <section data-bottom-title="Skálázhatóság">
+
+                    <h2>Skálázhatóság</h2>
+
+
+                    <aside class="notes">
+
+
+
+                        We've designed the architecture of JMS to scale well
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Skálázhatóság">
+
+                    <h4>Skálázhatóság</h4>
+
+
+                    <div class="figures scaling">
+
+                        <div class="fig fig-cache cache-1"><span>VARNISH</span></div>
+                        <div class="fig fig-cache cache-2"><span>CDN</span></div>
+
+                        <div class="fig fig-server server-1"><span>JMS</span></div>
+                        <div class="fig fig-server server-2"><span>JMS</span></div>
+                        <div class="fig fig-server server-3"><span>JMS</span></div>
+                        <div class="fig fig-server server-4"><span>JMS</span></div>
+
+
+                        <div class="svg svg-redis redis-1">
+                            <img src="images/redis-logo.svg" width="100" height="100" />
+                        </div>
+
+                        <div class="svg svg-redis redis-2">
+                            <img src="images/redis-logo.svg" width="100" height="100" />
+                        </div>
+
+                        <div class="arrow to-right from1 to1"></div>
+                        <div class="arrow to-right from1 to2"></div>
+
+                        <div class="arrow to-right from2 to1"></div>
+                        <div class="arrow to-right from2 to2"></div>
+
+                        <div class="arrow to-right from3 to1"></div>
+                        <div class="arrow to-right from3 to2"></div>
+
+                        <div class="arrow to-right from4 to1"></div>
+                        <div class="arrow to-right from4 to2"></div>
+
+                    </div>
+
+                    <div class="fragment" data-figure="addredis"></div>
+                    <div class="fragment" data-figure="tworedis"></div>
+                    <div class="fragment" data-figure="morecache"></div>
+
+                    <aside class="notes">
+
+
+
+                        A JMS cluster uses redis as an origin for all data - like modules and the latest version number,
+                        <br /><br />
+                        New instances of JMS also go behind to redis for data
+                        <br /><br />
+                        If necessary, you can deploy to more redis backends
+                        <br /><br />
+                        And since the output is cacheable, the whole cluster can be placed behind
+                        caches like varnish, or your CDN provider
+
+
+
+                    </aside>
+
+                </section>
+
+
+
+                <!--
+
+                  ____  _    _   _  ____ ___ _   _ ____
+                 |  _ \| |  | | | |/ ___|_ _| \ | / ___|
+                 | |_) | |  | | | | |  _ | ||  \| \___ \
+                 |  __/| |__| |_| | |_| || || |\  |___) |
+                 |_|   |_____\___/ \____|___|_| \_|____/
+
+
+                -->
+
+
+                <section data-bottom-title="Pluginek">
+
+                    <h2>Pluginek</h2>
+
+                    <aside class="notes">
+
+                        Plugins!
+                        <br />
+                        To extend and customize JMS for your needs, the easiest way is through its plugins
+
+                    </aside>
+
+
+                </section>
+
+
+                <section data-bottom-title="Pluginek">
+
+                    <h4>Pluginek</h4>
+
+                    <div class="part-left">
+                        <h3>Élesítés</h3>
+                    </div>
+                    <div class="part-right">
+                        <h3>Kiszolgálás</h3>
+                    </div>
+
+                    <aside class="notes">
+
+
+                        Plugins can interact with the data that JMS handles in two entry points:
+                        <br />
+                        while deploying modules and at the serving of modules
+
+                    </aside>
+
+
+                </section>
+
+                <section data-bottom-title="Pluginek">
+
+
+
+
+                    <div class="part-main  plugins deploy">
+
+                        <div class="figures">
+
+                            <div class="svg svg-plugins">
+                                <img src="images/fig-plugins.svg" width="100" height="100" />
+                            </div>
+                            <div class="arrow to-right"></div>
+
+                        </div>
+
+                        <h3>Pluginek Élesítéshez</h3>
+
+                        <p>
+                            A teljes kódbázishoz hozzáfér,<br /> ők végzik a nehéz munkát
+                        </p>
+                    </div>
+
+                    <div class="part-side">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+
+                        <ul class="fragment">
+                            <li>jslint / jshint</li>
+                            <li>kód tömörítés</li>
+                            <li>transpile/generate</li>
+                        </ul>
+                    </div>
+
+
+
+
+
+
+                    <aside class="notes">
+
+
+                        During deploy all the modules in the codebase are ran through the deploy plugins,
+                        your plugin has access the whole codebase, and can do some heavy work on them
+                        <br /><br />
+                        As i've mentioned before, we've put the cpu intensive work to the deploy processes,
+                        so for the plugins, we suggest the same
+                        <br /><br />
+                        Some of the possibilites are running code checks with jslint or hint, or any tool that you prefer.
+                        <br /><br />
+                        Or doing code compression - actually this is a default plugin using uglify
+                        <br /><br />
+                        Or transpile, or genereate EcmaScript 5 compatible javascript code from the language or javascript version you prefer
+
+
+                    </aside>
+
+
+                </section>
+
+                <section data-bottom-title="Pluginek">
+
+
+
+                    <div class="part-main plugins server">
+
+                        <div class="figures">
+
+                            <div class="svg svg-plugins">
+                                <img src="images/fig-plugins.svg" width="100" height="100" />
+                            </div>
+                            <div class="arrow to-right"></div>
+
+                        </div>
+
+                        <h3>Pluginek Kiszolgáláshoz</h3>
+
+                        <p>
+                            Hozzáfér a kliens kéréshez
+                        </p>
+                        <p>
+                            A kérés alapján elkészített modul csomagot módosíthatja
+                        </p>
+
+                    </div>
+
+
+                    <div class="part-side">
+
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+                        <ul class="fragment">
+                            <li>i18n</li>
+                        </ul>
+                    </div>
+
+                    <aside class="notes">
+                        Plugins that are ran during the serving of modules, has access to the modules to be sent to the client
+                        <br /><br />
+                        They also access the client request itself, with all the parameters that the client has sent
+                        <br /><br />
+                        They can modify the package to be sent to the client, for example we add our translated internationalization units to the packages here, at this point, based on the locale parameter sent by the client
+                        <br /><br />
+                        Plugins dont need to be both deploy and server plugins, you can create deploy only or server only plugins if you want to
+
+
+
+                    </aside>
+
+
+                </section>
+
+
+                <section data-bottom-title="Pluginek" class="plugins order">
+
+                    <div class="figures">
+
+                        <div class="svg svg-plugins plugin1">
+                            <img src="images/fig-plugins.svg" width="100" height="100" />
+                        </div>
+                        <div class="arrow to-right arrow1"></div>
+                        <div class="svg svg-plugins plugin2">
+                            <img src="images/fig-plugins.svg" width="100" height="100" />
+                        </div>
+                        <div class="arrow to-right arrow2"></div>
+                        <div class="svg svg-plugins plugin3">
+                            <img src="images/fig-plugins.svg" width="100" height="100" />
+                        </div>
+                    </div>
+
+                    <p>
+                        Plugin sorrend, függhetnek egymás kimenetétől
+                    </p>
+
+
+                    <aside class="notes">
+
+                        plugins can be arranged in order, so they can rely in each other's output, if your tasks need that
+
+
+
+                    </aside>
+
+
+                </section>
+
+
+                <section data-bottom-title="Pluginek">
+
+
+
+                    <div class="part-side plugins">
+
+                        <div class="svg svg-streams">
+                            <img src="images/logo-streams.svg" width="200" height="200" />
+                        </div>
+
+                    </div>
+
+                    <div class="part-main">
+
+                        <h3>Plugin fejlesztés</h3>
+
+                        <p>Egyszerű Node.js Streams v2 interface</p>
+
+                        <p>Minden plugin egy Transform stream példány</p>
+
+                        <p>Interface + Futásvezérlés</p>
+                    </div>
+
+
+
+
+                    <aside class="notes">
+
+                        Developing plugins are easy, as didn't want to match them to "yet another API", so
+                        we've chosen some existing interface
+                        <br /><br />
+                        And that is the simple node stream interface, the second version
+                        <br /><br />
+                        Every plugin has to be an instance of the Transform stream,
+                        and the data is piped right through them
+                        <br /><br />
+                        With this, you have total control over the whole pipeline, because
+                        Node Streams are both an interface, and a flow control mechanism
+
+                    </aside>
+
+
+                </section>
+
+
+
+
+                <section data-bottom-title="Monitorozás">
+
+                    <h2>Monitorozás</h2>
+
+                    <p>Processes, <br />concurrent requests,<br /> requests per second<br /> ... </p>
+
+                    <aside class="notes">
+
+
+                        To get some numbers about what JMS is doing, we've implemented a simple monitoring service.
+                        <br />
+                        It tells in quick HTTP headers if the JMS cluster is running fine, and some data in JSON format about, what it's doing currently
+                        <br /><br />
+                        Until now we added process count, concurrent requests, requests per second as basic measurements,
+                        but we're planning to expand this list, if we're near production use.
+
+
+
+                    </aside>
+
+                </section>
+
+                <!--
+
+                      _   _ ____  _____
+                     | | | / ___|| ____|
+                     | | | \___ \|  _|
+                     | |_| |___) | |___
+                      \___/|____/|_____|
+
+
+                -->
+
+
+                <section data-bottom-title="Használatban">
+
+                    <h2>Használatban</h2>
+
+                    <p>Integráció</p>
+
+                    <p>Mérések</p>
+
+                    <p>Kódbázis refaktor</p>
+
+                    <aside class="notes">
+                        Now, about using jms
+                        <br /><br />
+                        It's in a really early stage,
+                        <br />
+                        we are currently integrating it in our systems
+                        <br /><br />
+                        During this process we will run several stress tests using both emulated and real traffic,
+                        and prepare JMS for production usage
+                        <br /><br />
+                        Early measurements show an instant 10-20 percent save in the sizes of served packages, compared to our current feature based and common packages, and we havent even touched the source code - beside the AMD modularization
+                        <br />
+                        For JMS to be optimal, we will separate our code, even more,
+                        into small standalone apps or features, that can be layered on each other,
+                        and we can load them asynchronously, one by one, if the app or some user interaction requires them
+                        <br /><br />
+                        With these refactorings we predict some 30-40 percent save on scripts loaded on initial pageload
+
+                    </aside>
+
+                </section>
+
+
+                <section data-bottom-title="Tanulságok">
+
+                    <h2>Tanulságok</h2>
+
+
+                    <aside class="notes">
+                        I would like to tell you some lessons we've learned during developing this module server
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Tanulságok">
+
+
+
+                    <h3>npm tükrözés</h3>
+
+                    <p>Sinopia</p>
+
+                    <p><a href="https://github.com/rlidwka/sinopia">https://github.com/rlidwka/sinopia</a></p>
+
+
+                    <aside class="notes">
+
+
+                        With the integration with our systems, the issue of npm downtime came up.
+                        <br /><br />
+                        For nodejs modules NPM is the common module ecosystem - npm stands for "node packaged modules"
+                        <br />
+                        It is a global module registry free of use, but sometimes there is a downtime for some reason.
+                        <br />
+                        Such a downtime could affect upgrading the JMS cluster itself, if npm is unavailable at that time.
+                        <br /><br />
+                        Our devops team insisted to prepare for an incidental npm outage, so we had to set up an
+                        npm mirror for ourselves.
+                        <br /><br />
+                        Since npm has over a 100 gigabytes in size, we didn't want to mirror the whole repository,
+                        <br />
+                        so we've chosen a caching npm solution - Sinopia.
+                        <br />
+                        As Sinopia is a private/caching npm repository server,
+                        <br />
+                        in addition to our cache of used npm modules, we can internally publish and use some of our own libraries in our systems.
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Tanulságok">
+
+
+                    <h3>PM2 clustering</h3>
+
+                    <p>PM2</p>
+
+                    <p><a href="https://github.com/unitech/pm2">https://github.com/unitech/pm2</a></p>
+
+
+                    <aside class="notes">
+
+                        As JMS was developed, and we decided to use a multi process cluster,
+                        <br />
+                        PM2 was on one of the first clustering libraries we tried. Later on it turned out to be a good choice,
+                        as it managed processes, kept restarting processes if they dropped out, kept logging in order.
+                        <br /><br />
+                        PM2 even has an internal load balancer spreading traffic over the running processes.
+                        <br /><br />
+                        For the monitoring scripts we use pm2 own api, to communicate with the processes, and collect data from them,
+
+
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Tanulságok">
+
+
+                    <h3>Node.js Streamek</h3>
+
+
+
+                    <aside class="notes">
+
+
+                        Node streams are really super useful, with JMS we use them in almost every processing step
+                        <br /><br />
+                        After understanding the concept of streams they are easy to work with.
+                        <br /><br />
+                        In several parts we've simply thrown out classic flow control libraries, in favor of streams.
+                        <br /><br />
+                        Get familiar with them if you plan to work with node, they will come really handy.
+
+
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Tanulságok">
+
+
+                    <h3>Kódbázis modularizáció</h3>
+
+                    <aside class="notes">
+
+                        Even if you're using some classical inheritance model in your javascript codebase, AMD modules and their dependency definitions
+                        are extremly useful.
+
+                        <br /><br />
+                        During the refactoring of our codebase to AMD, we could easily drop out unused modules,
+                        or refactor several modules to be more effective, after some simple traversing through the dependency graph.
+
+                    </aside>
+
+                </section>
+
+
+                <section data-bottom-title="Jövőbeli fejlesztések">
+
+                    <h5>Bundles/shims/maps</h5>
+                    <h5>Kliens embed továbbfejlesztése</h5>
+                    <h5>GZip</h5>
+                    <h5>HTTPS</h5>
+                    <h5>Source Maps</h5>
+                    <h5>AMD pluginek</h5>
+                    <h5>CSS</h5>
+                    <h5>SPDY / HTTP2</h5>
+                    <h5>ES6 modulok</h5>
+
+                    <aside class="notes">
+
+                        We will develop JMS in the future, further along
+                        <br /><br />
+                        some quick low hanging fruits are:
+                        gzip compression,
+                        and addig sourcemaps for debugging
+                        <br /><br />
+
+                        AMD modules themselves can have plugins, supporting templates,
+                        or setting extra, module specific directives for JMS during deploy,
+                        and more, we plan to handle them as well
+                        <br /><br />
+                        If all this works with Javascript, why not serve CSS with JMS as well,
+                        we plan to pack and serve the css and the js code for a component together
+                        <br /><br />
+                        HTTP2 or SPDY is getting more and more well deserved attention for fixing many issues with page loading,
+                        and JMS certainly will benefit from the new protocol using server side push and parallel data streams
+                        <br /><br />
+                        We plan to to support ES6 Harmony modules in the near future, since they supposed to be the de facto standard modules in javascript.
+                        <br />
+                        On the other hand, right now, we're not thinking about supporting CommonJS,
+                        as they need some extra transportation format to pack them together.
+
+
+                    </aside>
+
+                </section>
+                <section data-bottom-title="Github">
+
+                    <h3><a href="https://github.com/ustream/jms">github.com / ustream / jms</a></h3>
+
+                    <aside class="notes">
+
+
+                        JMS is opensourced on github if you're interested.
+                        <br />
+                        Contributions, remarks and reviews are very welcome!
+
+                    </aside>
+
+                </section>
+
+                <section data-bottom-title="Vége">
+
+                    <h2>Köszönöm!</h2>
+
+                    <h4><a href="https://twitter.com/_Nec">@_Nec</a></h4>
+
+                    <aside class="notes">
+
+
+                        thank you, any questions?
+
+                    </aside>
+
+                </section>
+
+
+
+            </div>
+
+            <div class="bottom-bar">
+                <strong class="bottom-title">JavaScript Module Server</strong>
+                <a class="bottom-link link-twitter" href="https://twitter.com/_Nec">@_Nec</a>
+                <a class="bottom-link bottom-name">Szabolcs Szabolcsi-Tóth</a>
+            </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+                slideNumber: false,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'images/bg1.svg',
+				parallaxBackgroundSize: '4000px auto',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+
+            Reveal.addEventListener( 'slidechanged', function( event ) {
+                document.querySelector('.bottom-bar strong').innerText = event.currentSlide.getAttribute( 'data-bottom-title' );
+            } );
+
+            Reveal.addEventListener( 'fragmentshown', function( event ) {
+                Reveal.getCurrentSlide().classList.add( event.fragment.getAttribute( 'data-figure' ) );
+            });
+
+            Reveal.addEventListener( 'fragmenthidden', function( event ) {
+                Reveal.getCurrentSlide().classList.remove( event.fragment.getAttribute( 'data-figure' ) );
+            });
+
+		</script>
+
+	</body>
+</html>
